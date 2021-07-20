@@ -1,5 +1,5 @@
-import { Button, Card, PageHeader, Skeleton, Space, Table,Input } from "antd"
-import { Link, useHistory, useParams } from "react-router-dom"
+import { Button, PageHeader, Skeleton, Space, Table,Input } from "antd"
+import { Link, useParams } from "react-router-dom"
 
 import {
     PlusOutlined
@@ -20,7 +20,6 @@ const initalState : userListState = [];
 
 export const UserHome = () =>{
     const { moduleId } = useParams<{moduleId : string}>()
-    const history = useHistory();
     
     const [users, setUsers] = useState(initalState)
     const [filteredUsers, setFilteredUsers] = useState(initalState)
