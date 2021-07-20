@@ -1,0 +1,16 @@
+.loginCardContainer{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width: 600px;
+}
+.loginPageContainer{
+    position: fixed;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    background-color:#f0f0f0;
+
+}

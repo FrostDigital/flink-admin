@@ -1,8 +1,9 @@
 {
-  "name": "antd-demo-ts",
+  "name": "flink-admin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -10,8 +11,13 @@
     "@types/node": "^12.20.16",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "antd": "^4.16.7",
+    "axios": "^0.21.1",
     "react": "^17.0.2",
+    "react-async": "^10.0.1",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"
@@ -20,13 +26,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.ts src/**/*.tsx --fix" 
+    
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ], 
+    "rules" : {
+      "react-hooks/exhaustive-deps" : "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -39,5 +50,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.8",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }
