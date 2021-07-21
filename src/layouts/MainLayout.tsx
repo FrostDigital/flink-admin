@@ -2,7 +2,7 @@ import Layout, { Content } from "antd/lib/layout/layout"
 import Sider from "antd/lib/layout/Sider"
 import { useState } from "react"
 import { useSelector } from "react-redux";
-import { SideMenu } from "../components/menu";
+import { SideMenu } from "../components/SideMenu";
 import { RootState } from "../store/store";
 import { Spin } from "antd";
 
@@ -32,10 +32,15 @@ export const MainLayout = () =>{
     <div>
         {showLoading ? <Spin tip="Loading" size="large" className="spinnerWrapper" ></Spin> : null }  
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+            <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} style={{
+        overflow: 'auto',
+        height: '100vh',
+        position: 'fixed',
+        left: 0,
+      }}>
                 <SideMenu></SideMenu>
             </Sider>
-            <Content style={{ margin: '16px' }}>
+            <Content style={{ margin: '16px', marginLeft: 220 }}>
                 <Switch>
                     <Route path="/profile">
                         <div>Profile</div>
@@ -43,6 +48,7 @@ export const MainLayout = () =>{
                     <Route path="/modules/management_user/:moduleId">
                         <ManagementUser></ManagementUser>
                     </Route>     
+
                     <Route path="/modules/user/:moduleId">
                         <User></User>
                     </Route>                                        

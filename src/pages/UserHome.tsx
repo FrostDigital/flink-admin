@@ -32,12 +32,12 @@ export const UserHome = () =>{
     
 
     function onSearch(value : string){
-      const filter = value
+      const filter = value.toLowerCase();
       if(filter === ""){
         setFilteredUsers(users);
         return;
       }
-      const fi = users.filter(p=>p.username.includes(filter));
+      const fi = users.filter(p=>p.username.toLowerCase().includes(filter));
       setFilteredUsers(fi);
     }
  
@@ -83,7 +83,7 @@ export const UserHome = () =>{
         columns.push( {
           title: 'Action',
           width: '100px',
-          key: 'action',
+          key: 'password',
           render: (text : string, record : ManagementUser)=> (
             <Space size="middle">
               <Link to={"/modules/user/" +  moduleId + "/edit/" +  record._id + "/password"}>Change password</Link>
@@ -102,10 +102,10 @@ export const UserHome = () =>{
     subTitle=""
     extra={[
       
-      <Space>
-        {module?.features.includes("create") ? <Button type="primary" icon={<PlusOutlined></PlusOutlined>}>Add user</Button> : null}
+      <Space key="1">
+        {module?.features.includes("create") ? <Button type="primary" icon={<PlusOutlined></PlusOutlined>} key="2">Add user</Button> : null}
 
-      <Search key="1" placeholder="input search text" onSearch={onSearch} allowClear enterButton />
+        <Search key="1" placeholder="Search for..." onSearch={onSearch} allowClear enterButton />
       </Space>
 
     ]}>

@@ -101,7 +101,7 @@ export class apiClient{
             if( ex.response ){
                 throw ex.response.data?.error?.detail;
             }
-            console.log("ex", ex)
+
         }
 
     }

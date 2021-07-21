@@ -27,16 +27,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.ts src/**/*.tsx --fix" 
-    
+    "lint": "eslint src/**/*.ts src/**/*.tsx --fix"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ], 
-    "rules" : {
-      "react-hooks/exhaustive-deps" : "off"
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
     }
   },
   "browserslist": {
@@ -53,6 +52,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
+    "prettier": "2.3.2",
     "typescript-plugin-css-modules": "^3.4.0"
   }
 }

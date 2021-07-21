@@ -18,7 +18,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setLoggedin: (state,data : { payload : LoginResponse }) => {
-      console.log("Setting logged in")
       state.user = data.payload.user;
       state.token = data.payload.token;
       state.loggedIn = true;

@@ -15,9 +15,7 @@ export const modulesSlice = createSlice({
   initialState,
   reducers: {
     setModules: (state, data : { payload : Module[] }) => {
-        console.log("setting modules", data)
       state.all= data.payload
-      console.log("state", state)
     }
   }
 })

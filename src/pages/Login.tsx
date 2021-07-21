@@ -13,7 +13,6 @@ export const Login = () =>{
     const dispatch = useDispatch();
     const history = useHistory();
     const onFinish = async (values: any) => {
-        console.log(values)
         dispatch(show());
 
         try{
@@ -44,7 +43,6 @@ export const Login = () =>{
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 16 }}
       onFinish={onFinish}
-    //  onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="Username"

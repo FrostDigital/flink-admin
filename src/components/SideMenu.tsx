@@ -40,7 +40,6 @@ const LogoutAction = () =>{
 export const SideMenu = () =>{
 
   const modules = useSelector( ( state : RootState) => state.modules)
-  console.log("modules", modules)
   let menuItems = modules.all.filter( m => m.ui === "true").map((m)=>{
 
 

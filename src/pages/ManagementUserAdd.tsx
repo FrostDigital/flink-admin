@@ -36,7 +36,6 @@ export const ManagementUserAdd = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
-    console.log("Finished")
     dispatch(show());
     const client = new apiClient();
     try{
