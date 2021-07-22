@@ -1,5 +1,5 @@
 import { Button, PageHeader, Skeleton, Space, Table,Input } from "antd"
-import { Link, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 
 import {
     PlusOutlined
@@ -20,6 +20,9 @@ const initalState : userListState = [];
 
 export const UserHome = () =>{
     const { moduleId } = useParams<{moduleId : string}>()
+
+    
+    const history = useHistory();
     
     const [users, setUsers] = useState(initalState)
     const [filteredUsers, setFilteredUsers] = useState(initalState)
@@ -103,7 +106,7 @@ export const UserHome = () =>{
     extra={[
       
       <Space key="1">
-        {module?.features.includes("create") ? <Button type="primary" icon={<PlusOutlined></PlusOutlined>} key="2">Add user</Button> : null}
+        {module?.features.includes("create") ? <Button type="primary" icon={<PlusOutlined></PlusOutlined>} key="2" onClick={ ()=>{ history.push("/modules/user/" + moduleId + "/add") } }>Add user</Button> : null}
 
         <Search key="1" placeholder="Search for..." onSearch={onSearch} allowClear enterButton />
       </Space>

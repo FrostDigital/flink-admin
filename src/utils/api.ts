@@ -9,7 +9,7 @@ import { User } from "../schemas/User";
 import { FullUser } from "../schemas/FullUser";
 
 export interface requestBody{
-    [key : string] : string
+    [key : string] : any
 };
 
 export class apiClient{
@@ -19,6 +19,14 @@ export class apiClient{
         this.baseUrl = config.api;
     }
     
+    async userModuleGetProfileSchma(moduleId : string) : Promise<any>{
+        return (await this.get("/" + moduleId + "/profile/schema")).data.data;
+    }
+
+    async userModulePutProfile(moduleId : string, userId : string, profile : {[key : string] : any} ) : Promise<void>{
+        await this.put("/" + moduleId + "/profile/" + userId + "/append", profile)
+    }
+
     async userModulePutPassword(moduleId : string, userId : string, password : string ) : Promise<void>{
         await this.put("/" + moduleId + "/password/" + userId, { password })
     }
@@ -27,9 +35,17 @@ export class apiClient{
         await this.put("/" + moduleId + "/username/" + userId, { username })
     }
 
+    async userModuleDelete(moduleId : string, userId : string) : Promise<void>{
+        await this.delete("/" + moduleId + "/" + userId);
+    }
+
     async userModuleGet(moduleId : string, userId : string) : Promise<FullUser>{
         return (await this.get("/" + moduleId + "/" + userId)).data.data as FullUser
     }
+
+    async userModulePost(moduleId : string, username : string, password : string, profile : { [key:string] : any }) : Promise<FullUser>{
+        return (await this.post("/" + moduleId, { username, password, profile, authentificationMethod: password})).data.data as FullUser
+    }    
 
 
     async userModuleList(moduleId : string) : Promise<User[]>{

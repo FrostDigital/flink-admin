@@ -5,6 +5,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+import { UserAdd } from "./UserAdd";
 import { UserEdit } from "./UserEdit";
 
 import { UserHome } from "./UserHome";
@@ -17,7 +18,7 @@ export const User = () =>{
 
     return (<Switch>
         <Route path={`${match.path}/add`}>
-            <UserHome></UserHome>
+            <UserAdd></UserAdd>
         </Route>     
 
         <Route path={`${match.path}/edit/:userId/password`}>
