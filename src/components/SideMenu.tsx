@@ -4,6 +4,7 @@ import {
     InfoCircleOutlined,
     UsergroupAddOutlined,
     KeyOutlined,
+    DatabaseOutlined
   } from '@ant-design/icons';
 
 
@@ -50,6 +51,9 @@ export const SideMenu = () =>{
         break;
       case "MANAGEMENT_USER":
         icon = <KeyOutlined />;
+        break;
+      case "REPO":
+        icon = <DatabaseOutlined />;
         break;
     }
 

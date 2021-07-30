@@ -7,6 +7,8 @@ import { ManagementUser } from "../schemas/ManagementUser";
 import { ManagementUserUpdate } from "../schemas/ManagementUserUpdate";
 import { User } from "../schemas/User";
 import { FullUser } from "../schemas/FullUser";
+import { RepoInfo } from "../schemas/RepoInfo";
+import { setAppOffline } from "../store/features/loading";
 
 export interface requestBody{
     [key : string] : any
@@ -18,6 +20,20 @@ export class apiClient{
     constructor(){
         this.baseUrl = config.api;
     }
+    
+
+    
+    async repoModuleGetDocuments(moduleId : string, page : number, page_size : number, sort : string | null, direction : string | null) : Promise<any[]>{
+        return (await this.get("/" + moduleId + "/documents/" + page + "?size=" + page_size + "&sort=" + sort + "&direction=" + direction )).data.data.items as any[];
+    }
+
+
+
+    async repoModuleGet(moduleId : string) : Promise<RepoInfo>{
+        return (await this.get("/" + moduleId)).data.data as RepoInfo;
+    }
+
+
     
     async userModuleGetProfileSchma(moduleId : string) : Promise<any>{
         return (await this.get("/" + moduleId + "/profile/schema")).data.data;
@@ -114,9 +130,18 @@ export class apiClient{
             const resp = await axios(config);
             return resp;
         }catch(ex){
+            console.log(ex)
+            if (!ex.response?.status) {
+                store.dispatch(setAppOffline())
+                console.log("Network is down")
+                return;
+            }
             if( ex.response ){
                 throw ex.response.data?.error?.detail;
+            }else{
+                throw new Error("Unknonw error")
             }
+
 
         }
 

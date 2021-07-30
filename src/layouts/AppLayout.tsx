@@ -12,6 +12,7 @@ import {
     Route,
     Redirect,
   } from "react-router-dom";
+import { AppOffline } from "../components/AppOffline";
 
 
 export interface MainLayoutProps{
@@ -21,6 +22,7 @@ export interface MainLayoutProps{
 export const AppLayout = (props : MainLayoutProps ) =>{
 
     const showLoading = useSelector( (state : RootState) => state.loading.value);
+    const isOffline = useSelector ( (state : RootState) => state.loading.appOffline);
     const isAuthenticated = useSelector( (state : RootState) => state.user.loggedIn);
 
 
@@ -30,6 +32,7 @@ export const AppLayout = (props : MainLayoutProps ) =>{
     return (
     <div>
         {showLoading || (!props.isReady) ? <Spin tip="Loading" size="large" className="spinnerWrapper" ></Spin> : null }  
+        {isOffline && <AppOffline/>}
         {props.isReady ?(
               <Router>
                 <Switch>

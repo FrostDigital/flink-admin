@@ -1,0 +1,20 @@
+.AppOffline {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+}
+
+.AppOfflineCardContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #000;
+}
