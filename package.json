@@ -8,7 +8,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.16",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "antd": "^4.16.7",
@@ -51,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^12.20.16",
     "@types/react-router-dom": "^5.1.8",
     "prettier": "2.3.2",
     "typescript-plugin-css-modules": "^3.4.0"
