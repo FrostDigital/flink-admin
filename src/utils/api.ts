@@ -60,7 +60,7 @@ export class apiClient{
     }
 
     async userModulePost(moduleId : string, username : string, password : string, profile : { [key:string] : any }) : Promise<FullUser>{
-        return (await this.post("/" + moduleId, { username, password, profile, authentificationMethod: password})).data.data as FullUser
+        return (await this.post("/" + moduleId, { username, password, profile, authentificationMethod: "password"})).data.data as FullUser
     }    
 
 
