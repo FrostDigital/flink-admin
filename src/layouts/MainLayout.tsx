@@ -15,6 +15,7 @@ import { ManagementUser } from "../pages/ManagementUser";
 import { User } from "../pages/User";
 import { Repo } from "../pages/Repo";
 import { Home } from "../pages/Home";
+import { Action } from "../pages/Action";
 
 
 
@@ -57,6 +58,9 @@ export const MainLayout = () =>{
                     <Route path="/modules/repo/:moduleId">
                         <Repo></Repo>
                     </Route>           
+                    <Route path="/modules/action/:moduleId">
+                        <Action></Action>
+                    </Route>                             
                     <Route path="/">
                         <Home></Home>
                     </Route>                                                    

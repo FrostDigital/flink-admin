@@ -7,6 +7,7 @@ import {
   } from "react-router-dom";
 import { UserAdd } from "./UserAdd";
 import { UserEdit } from "./UserEdit";
+import { UserView } from "./UserView";
 
 import { UserHome } from "./UserHome";
 import { UserPassword } from "./UserPassword";
@@ -28,6 +29,10 @@ export const User = () =>{
         <Route path={`${match.path}/edit/:userId`}>
             <UserEdit></UserEdit>
         </Route>     
+        <Route path={`${match.path}/view/:userId`}>
+            <UserView></UserView>
+        </Route>     
+
 
         <Route path={`${match.path}/`}>
             <UserHome></UserHome>

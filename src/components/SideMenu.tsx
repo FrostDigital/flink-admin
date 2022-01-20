@@ -4,7 +4,8 @@ import {
     InfoCircleOutlined,
     UsergroupAddOutlined,
     KeyOutlined,
-    DatabaseOutlined
+    DatabaseOutlined,
+    PlayCircleOutlined
   } from '@ant-design/icons';
 
 
@@ -54,6 +55,9 @@ export const SideMenu = () =>{
         break;
       case "REPO":
         icon = <DatabaseOutlined />;
+        break;
+      case "ACTION":
+        icon = <PlayCircleOutlined />
         break;
     }
 

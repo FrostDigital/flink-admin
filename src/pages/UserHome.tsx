@@ -64,11 +64,19 @@ export const UserHome = () =>{
           title: 'Name',
           dataIndex: 'username',
           key: 'username',
-
+          render: (text : string, record : ManagementUser)=> (
+            <Space size="middle">
+              { module?.features.includes("view") ?  <Link to={"/modules/user/" +  moduleId + "/view/" +  record._id}>{text}</Link> : <div>{text}</div> }
+              
+            </Space>
+          ),
         },
        
 
       ];
+
+      
+
       if(module?.features.includes("edit")){
           columns.push( {
             title: 'Action',
@@ -82,7 +90,21 @@ export const UserHome = () =>{
             ),
           },)
   
-      }else{
+      }else if(module?.features.includes("view")){
+        columns.push( {
+          title: 'Action',
+          width: '100px',
+          key: 'action',
+          render: (text : string, record : ManagementUser)=> (
+            <Space size="middle">
+              
+              <Link to={"/modules/user/" +  moduleId + "/view/" +  record._id}>View</Link>
+            </Space>
+          )
+        },)
+
+
+      } else  {
         columns.push( {
           title: 'Action',
           width: '100px',
@@ -94,7 +116,8 @@ export const UserHome = () =>{
           ),
         },)        
       }
-      
+
+
 
 
 
