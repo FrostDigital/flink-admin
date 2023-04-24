@@ -11,6 +11,8 @@ import { RepoInfo } from "../schemas/RepoInfo";
 import { setAppOffline } from "../store/features/loading";
 import { ViewUser } from "../schemas/ViewUser";
 import { ActionResponse } from "../schemas/Action";
+import { DebugRes } from "../schemas/Debug";
+import { NotificationRes } from "../schemas/Notification";
 
 export interface requestBody {
   [key: string]: any;
@@ -59,6 +61,32 @@ export class apiClient {
     profile: { [key: string]: any }
   ): Promise<void> {
     await this.put("/" + moduleId + "/profile/" + userId + "/append", profile);
+  }
+
+  async getNotification(moduleId: string): Promise<NotificationRes> {
+    return (await this.get("/" + moduleId + "/")).data.data as NotificationRes;
+  }
+
+  async sendNotification(moduleId: string, values : any): Promise<void> {
+    let { segment, subject, body, ...data }  = values
+
+    return (await this.post("/" + moduleId + "/message", {
+      segment,
+      subject, 
+      body,
+      data
+    })).data.data as void;
+  }  
+
+  async getDebug(moduleId: string): Promise<DebugRes> {
+    return (await this.get("/" + moduleId + "/")).data.data as DebugRes;
+  }  
+
+  async setDebugEnabled(moduleId: string): Promise<void> {
+    await this.post("/" + moduleId + "/enable");
+  }
+  async setDebugDisabled(moduleId: string): Promise<void> {
+    await this.post("/" + moduleId + "/disable");
   }
 
   async userModulePutPassword(
