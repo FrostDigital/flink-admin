@@ -13,6 +13,7 @@ import { ViewUser } from "../schemas/ViewUser";
 import { ActionResponse } from "../schemas/Action";
 import { DebugRes } from "../schemas/Debug";
 import { NotificationRes } from "../schemas/Notification";
+import {v4 as uuidv4 } from "uuid";
 
 export interface requestBody {
   [key: string]: any;
@@ -69,7 +70,8 @@ export class apiClient {
 
   async sendNotification(moduleId: string, values : any): Promise<void> {
     let { segment, subject, body, ...data }  = values
-
+    data.notificationId = uuidv4()
+    
     return (await this.post("/" + moduleId + "/message", {
       segment,
       subject, 
