@@ -97,7 +97,6 @@ export const Notification = () => {
                   <Form.Item label={d.description} name={d.id} key={`data_${d.id}`}>
                     {d.options ? (
                       <Select
-                        placeholder="Select segment to send notification to"
                         onChange={(value: string) => {
                           changeDataValue(d.id, value);
                         }}
