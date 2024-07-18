@@ -1,5 +1,8 @@
+// @ts-ignore
+const _env_ = window._env_ || {};
+
 const config = {
-    "title" : process.env.REACT_APP_APPNAME || "Admin",
-    "api" : process.env.REACT_APP_APIURL || "http://localhost:3333/managementapi"
+  title: _env_.APPNAME || "Admin",
+  api: _env_.APIURL || "http://localhost:3333/managementapi",
 };
 export default config;
